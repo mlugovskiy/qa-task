@@ -11,9 +11,9 @@ export class Actions {
       }
     async login(username: string, password: string) {
         await this.loginPage.open();
-        await this.loginPage.usernameInput.click();
+        await this.loginPage.usernameInput.focus();
         await this.page.keyboard.type(username);
-        await this.loginPage.passwordInput.click();
+        await this.loginPage.passwordInput.focus();
         await this.page.keyboard.type(password);
         await this.loginPage.loginButton.click();
       }
@@ -25,6 +25,7 @@ export class Actions {
         //Воркэроунд для чистки корзины с нечетным количеством товаров, так как есть баг, что корзина не открывается с нечетным количеством товара
         if (productsCount % 2 == 1) {
           await mainPage.buyProductButton.nth(1).click();
+          await basket.сountOfProductsBadge.getByText(String(productsCount + 1)).waitFor();
           await basket.basketIcon.click();
           await basket.clearBasketButton.click();
           await basket.сountOfProductsBadge.getByText('0').waitFor();

@@ -19,8 +19,7 @@ test.describe('Тестовый набор 1. Переход в корзину',
   test('Тест-кейс 2. Переход в корзину с 1 неакционным товаром', async ({ page, mainPage, basket }) => {
     const productsInBasket: IProductInfo[] = [];
     await mainPage.addProductToBasket(1, productsInBasket);
-    await page.waitForResponse(testConfig.requests.basketGet);
-    await expect(basket.сountOfProductsBadge).toHaveText('1');
+    await basket.сountOfProductsBadge.getByText('1').waitFor();
     await basket.basketIcon.click();
     await expect(basket.basketDropDownWindow).toBeVisible();
     await expect(basket.allProductsListItems).toHaveCount(1);
@@ -34,8 +33,7 @@ test.describe('Тестовый набор 1. Переход в корзину',
   test('Тест-кейс 3. Переход в корзину с 1 акционным товаром', async ({ page, mainPage, basket }) => {
     const productsInBasket: IProductInfo[] = [];
     await mainPage.addProductToBasket(0, productsInBasket);
-    await page.waitForResponse(testConfig.requests.basketGet);
-    await expect(basket.сountOfProductsBadge).toHaveText('1');
+    await basket.сountOfProductsBadge.getByText('1').waitFor();
     await basket.basketIcon.click();
     await expect(basket.basketDropDownWindow).toBeVisible();
     await expect(basket.allProductsListItems).toHaveCount(1);
@@ -54,8 +52,7 @@ test.describe('Тестовый набор 1. Переход в корзину',
     await mainPage.productCardTitle.getByText('Little Red Riding Hood').waitFor();
     await mainPage.addProductToBasket(0, productsInBasket);
     const totalPrice: string = productsInBasket.reduce((acc, product) => acc + product.price, 0).toString();
-    await page.waitForResponse(testConfig.requests.basketGet);
-    await expect(basket.сountOfProductsBadge).toHaveText('9');
+    await basket.сountOfProductsBadge.getByText('9').waitFor();
     await basket.basketIcon.click();
     await expect(basket.basketDropDownWindow).toBeVisible();
     await expect(basket.allProductsListItems).toHaveCount(9);
@@ -74,8 +71,7 @@ test.describe('Тестовый набор 1. Переход в корзину',
     await mainPage.addProductToBasket(0, productsInBasket)
     const totalPrice = String(productsInBasket[0].price*9);
     const productPriceInBasketExpected = ` - ${totalPrice} р.`;
-    await page.waitForResponse(testConfig.requests.basketGet);
-    await expect(basket.сountOfProductsBadge).toHaveText('9');
+    await basket.сountOfProductsBadge.getByText('9').waitFor();
     await basket.basketIcon.click();
     await expect(basket.basketDropDownWindow).toBeVisible();
     await expect(basket.allProductsListItems).toHaveCount(1);

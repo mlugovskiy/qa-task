@@ -14,6 +14,7 @@ export default defineConfig({
   // expect: {
   //   timeout: 20 * 1000,
   // },
+  globalSetup: require.resolve('./globalSetup'),
   testDir: './tests',
   /* Run tests in files in parallel */
   fullyParallel: false,
@@ -29,6 +30,7 @@ export default defineConfig({
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
     baseURL: testConfig.baseUrl,
+    storageState: 'state.json',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',

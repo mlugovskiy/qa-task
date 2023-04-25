@@ -10,5 +10,6 @@ export const testConfig = {
     },
     requests: {
       basketGet: '/basket/get',
+      clearBasket: '/basket/clear'
     }
   }

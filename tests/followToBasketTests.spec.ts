@@ -31,9 +31,9 @@ test.describe('Тестовый набор 1. Переход в корзину',
     await basket.basketIcon.click();
     await expect(basket.basketDropDownWindow).toBeVisible();
     await expect(basket.allProductsListItems).toHaveCount(1);
-    await expect(basket.productCount).toHaveText('1');
-    await expect(basket.productTitle).toHaveText(productsInBasket[0].title);
-    await expect(basket.productPrice).toHaveText(productsInBasket[0].priceFormatted);
+    await expect(basket.productsCounts).toHaveText('1');
+    await expect(basket.productsTitles).toHaveText(productsInBasket[0].title);
+    await expect(basket.productsPrices).toHaveText(productsInBasket[0].priceFormatted);
     await expect(basket.totalPrice).toHaveText(productsInBasket[0].price.toString());
     await basket.followToBasketButton.click();
    
@@ -51,9 +51,9 @@ test.describe('Тестовый набор 1. Переход в корзину',
     await basket.basketIcon.click();
     await expect(basket.basketDropDownWindow).toBeVisible();
     await expect(basket.allProductsListItems).toHaveCount(1);
-    await expect(basket.productCount).toHaveText('1');
-    await expect(basket.productTitle).toHaveText(productsInBasket[0].title);
-    await expect(basket.productPrice).toHaveText(productsInBasket[0].priceFormatted);
+    await expect(basket.productsCounts).toHaveText('1');
+    await expect(basket.productsTitles).toHaveText(productsInBasket[0].title);
+    await expect(basket.productsPrices).toHaveText(productsInBasket[0].priceFormatted);
     await expect(basket.totalPrice).toHaveText(productsInBasket[0].price.toString())
     await basket.followToBasketButton.click();
     
@@ -76,9 +76,9 @@ test.describe('Тестовый набор 1. Переход в корзину',
     await basket.basketIcon.click();
     await expect(basket.basketDropDownWindow).toBeVisible();
     await expect(basket.allProductsListItems).toHaveCount(9);
-    await expect(basket.productCount).toHaveText(['1', '1', '1', '1', '1', '1', '1', '1', '1', '1']);
-    await expect(basket.productTitle).toHaveText(productsInBasket.map(product => product.title));
-    await expect(basket.productPrice).toHaveText(productsInBasket.map(product => product.priceFormatted));
+    await expect(basket.productsCounts).toHaveText(['1', '1', '1', '1', '1', '1', '1', '1', '1', '1']);
+    await expect(basket.productsTitles).toHaveText(productsInBasket.map(product => product.title));
+    await expect(basket.productsPrices).toHaveText(productsInBasket.map(product => product.priceFormatted));
     await expect(basket.totalPrice).toHaveText(totalPrice);
     await basket.followToBasketButton.click();
     
@@ -101,9 +101,9 @@ test.describe('Тестовый набор 1. Переход в корзину',
     await basket.basketIcon.click();
     await expect(basket.basketDropDownWindow).toBeVisible();
     await expect(basket.allProductsListItems).toHaveCount(1);
-    await expect(basket.productCount).toHaveText('9');
-    await expect(basket.productTitle).toHaveText(productsInBasket[0].title);
-    await expect(basket.productPrice).toHaveText(productPriceInBasketExpected);
+    await expect(basket.productsCounts).toHaveText('9');
+    await expect(basket.productsTitles).toHaveText(productsInBasket[0].title);
+    await expect(basket.productsPrices).toHaveText(productPriceInBasketExpected);
     await expect(basket.totalPrice).toHaveText(totalPrice);
     await basket.followToBasketButton.click();
     

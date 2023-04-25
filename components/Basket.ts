@@ -7,10 +7,10 @@ export class Basket {
   readonly basketDropDownWindow: Locator;
   readonly basketIcon: Locator;
   readonly allProductsListItems: Locator;
-  readonly productTitle: Locator;
-  readonly productPrice: Locator;
+  readonly productsTitles: Locator;
+  readonly productsPrices: Locator;
   readonly totalPrice: Locator;
-  readonly productCount: Locator;
+  readonly productsCounts: Locator;
   readonly сountOfProductsBadge: Locator;
   
   constructor(page: Page) {
@@ -21,9 +21,9 @@ export class Basket {
     this.сountOfProductsBadge = this.page.locator('span.basket-count-items');
     this.basketDropDownWindow = this.page.locator('div[aria-labelledby="dropdownBasket"]');
     this.allProductsListItems = this.page.locator('ul.list-group-flush > li');
-    this.productTitle = this.allProductsListItems.locator('.basket-item-title');
-    this.productPrice = this.allProductsListItems.locator('.basket-item-price');
-    this.productCount = this.allProductsListItems.locator('.basket-item-count');
+    this.productsTitles = this.allProductsListItems.locator('.basket-item-title');
+    this.productsPrices = this.allProductsListItems.locator('.basket-item-price');
+    this.productsCounts = this.allProductsListItems.locator('.basket-item-count');
     this.totalPrice = this.page.locator('.basket_price');
   }
 }

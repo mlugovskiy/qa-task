@@ -28,7 +28,7 @@ npx playwright test
 
 Для запуска тестов только в браузере Chromium, используйте следующую команду:
 ```
-npx playwright test --project=chromium`
+npx playwright test --project=chromium
 ```
 
 

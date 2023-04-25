@@ -9,8 +9,6 @@ export interface IProductInfo {
 }
 
 export class MainPage extends BasePage {
-  readonly buyDiscountProduct1Button = this.page.locator('.actionBuyProduct').nth(0);
-  readonly buyNonDiscountProduct4Button = this.page.locator('.actionBuyProduct').nth(3);
   readonly buyProductButton = this.page.locator('.actionBuyProduct');
   readonly firstPageButton = this.page.locator('a[data-page-number="1"]');
   readonly secondPageButton = this.page.locator('a[data-page-number="2"]');

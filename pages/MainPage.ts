@@ -19,7 +19,7 @@ export class MainPage extends BasePage {
   readonly productCardEnterCount = this.page.locator('.note-list [name="product-enter-count"]');
   
   async getProductInfo(indexOfProductCard: number): Promise<IProductInfo> {
-    const price = +((await this.productCardPrice.nth(indexOfProductCard).innerText())?.match(/^\S*/g)?.[0] || '');
+    const price = +((await this.productCardPrice.nth(indexOfProductCard).innerText())?.match(/\d*/)?.[0] || '');
     return {
       index: indexOfProductCard,
       title: await this.productCardTitle.nth(indexOfProductCard).innerText(),

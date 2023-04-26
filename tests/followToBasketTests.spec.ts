@@ -6,10 +6,14 @@ import { testConfig } from '../testConfig';
 
 test.describe('Тестовый набор 1. Переход в корзину', () => {
   test.beforeEach(async ({ actions, mainPage, basket }) => {
-       const clearRequestStatus = await actions.clearBasket();
-       expect(clearRequestStatus).toBeTruthy();
-       await mainPage.open();
-       await expect(basket.сountOfProductsBadge).toHaveText('0');
+    const clearRequestStatus = await actions.clearBasket();
+    expect(clearRequestStatus).toBeTruthy();
+    await mainPage.open();
+    await expect(basket.сountOfProductsBadge).toHaveText('0');
+  });
+  test.afterAll(async ({ actions }) => {
+    const clearRequestStatus = await actions.clearBasket();
+    expect(clearRequestStatus).toBeTruthy();
   });
   test('Тест-кейс 1. Переход в пустую корзину', async ({ page, basket, basketPage }) => {
     await expect(basket.сountOfProductsBadge).toHaveText('0');
@@ -18,9 +22,9 @@ test.describe('Тестовый набор 1. Переход в корзину',
     await basket.followToBasketButton.click();
     
     //ожидание загрузки страницы корзины
-    await page.waitForURL(testConfig.routes.basket)
+    await page.waitForURL(testConfig.routes.basket);
     await page.waitForLoadState('networkidle');
-
+    
     //проверка, что на странице корзины нет ошибок
     await expect(basketPage.siteError).not.toBeVisible();
   });
@@ -36,11 +40,11 @@ test.describe('Тестовый набор 1. Переход в корзину',
     await expect(basket.productsPrices).toHaveText(productsInBasket[0].priceFormatted);
     await expect(basket.totalPrice).toHaveText(productsInBasket[0].price.toString());
     await basket.followToBasketButton.click();
-   
+    
     //ожидание загрузки страницы корзины
-    await page.waitForURL(testConfig.routes.basket)
+    await page.waitForURL(testConfig.routes.basket);
     await page.waitForLoadState('networkidle');
-
+    
     //проверка, что на странице корзины нет ошибок
     await expect(basketPage.siteError).not.toBeVisible();
   });
@@ -58,9 +62,9 @@ test.describe('Тестовый набор 1. Переход в корзину',
     await basket.followToBasketButton.click();
     
     //ожидание загрузки страницы корзины
-    await page.waitForURL(testConfig.routes.basket)
+    await page.waitForURL(testConfig.routes.basket);
     await page.waitForLoadState('networkidle');
-
+    
     //проверка, что на странице корзины нет ошибок
     await expect(basketPage.siteError).not.toBeVisible();
   });
@@ -76,20 +80,20 @@ test.describe('Тестовый набор 1. Переход в корзину',
     await basket.basketIcon.click();
     await expect(basket.basketDropDownWindow).toBeVisible();
     await expect(basket.allProductsListItems).toHaveCount(9);
-    await expect(basket.productsCounts).toHaveText(['1', '1', '1', '1', '1', '1', '1', '1', '1', '1']);
+    await expect(basket.productsCounts).toHaveText(['1', '1', '1', '1', '1', '1', '1', '1', '1']);
     await expect(basket.productsTitles).toHaveText(productsInBasket.map(product => product.title));
     await expect(basket.productsPrices).toHaveText(productsInBasket.map(product => product.priceFormatted));
     await expect(basket.totalPrice).toHaveText(totalPrice);
     await basket.followToBasketButton.click();
     
     //ожидание загрузки страницы корзины
-    await page.waitForURL(testConfig.routes.basket)
+    await page.waitForURL(testConfig.routes.basket);
     await page.waitForLoadState('networkidle');
-
+    
     //проверка, что на странице корзины нет ошибок
     await expect(basketPage.siteError).not.toBeVisible();
   });
-
+  
   test('Тест-кейс 5. Переход в корзину с 9 акционными товарами одного наименования', async ({ page, basket, basketPage, mainPage }) => {
     const productsInBasket: IProductInfo[] = [];
     await mainPage.productCardEnterCount.nth(0).clear();
@@ -108,9 +112,9 @@ test.describe('Тестовый набор 1. Переход в корзину',
     await basket.followToBasketButton.click();
     
     //ожидание загрузки страницы корзины
-    await page.waitForURL(testConfig.routes.basket)
+    await page.waitForURL(testConfig.routes.basket);
     await page.waitForLoadState('networkidle');
-
+    
     //проверка, что на странице корзины нет ошибок
     await expect(basketPage.siteError).not.toBeVisible();
   });

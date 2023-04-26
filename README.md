@@ -2,7 +2,7 @@
 
 Данный репозиторий содержит тестовое задание для позиции QA. Все тесты находятся в файле `qa-task\tests\followToBasketTests.spec.ts`
 
-Тесты по умолчанию выполняются в трех браузерах: Chromium, Firefox, Webkit. Подключены три репортера: playwright html, playwright line и allure.
+Тесты могут выполняться в трех браузерах: Chrome, Firefox, Safari. Подключены три репортера: playwright html, playwright line и allure.
 
 ## Установка
 
@@ -21,15 +21,27 @@ npx playwright install
 
 ## Запуск тестов
 
+Для запуска тестов в браузере Chrome, используйте следующую команду:
+```
+npx playwright test --project=chromium
+```
+
+Для запуска тестов в браузере Firefox, используйте следующую команду:
+```
+npx playwright test --project=firefox
+```
+
+Для запуска тестов в браузере Safari, используйте следующую команду:
+```
+npx playwright test --project=webkit
+```
+
 Для запуска всех тестов во всех браузерах, используйте следующую команду:
 ```
 npx playwright test
 ```
 
-Для запуска тестов только в браузере Chromium, используйте следующую команду:
-```
-npx playwright test --project=chromium
-```
+
 
 
 ## Просмотр Allure отчета

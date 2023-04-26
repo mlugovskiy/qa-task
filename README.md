@@ -1,9 +1,24 @@
 # Тестовое задание QA
 
-Данный репозиторий содержит тестовое задание для позиции QA. Все тесты находятся в файле `qa-task\tests\followToBasketTests.spec.ts`
+Данный репозиторий содержит тестовое задание для позиции QA. Все тесты находятся в файле `\tests\followToBasketTests.spec.ts`
 
 Тесты могут выполняться в трех браузерах: Chrome, Firefox, Safari. Подключены три репортера: playwright html, playwright line и allure.
 
+##Примеры селекторов и регулярных выражений
+1. xpath в `\pages\MainPage.ts` в 12 строке:
+```
+readonly buyProductButton = this.page.locator('//button[contains(@class,"actionBuyProduct")]');
+```
+2. css селекторы `\pages\MainPage.ts` в строках с 13 и далее:
+```
+readonly firstPageButton = this.page.locator('a[data-page-number="1"]');
+readonly secondPageButton = this.page.locator('a[data-page-number="2"]');
+readonly secondPageIndexActive = this.page.locator('.page-item.active');
+```
+3. регулярное выражение `\pages\MainPage.ts` в строке 22:
+```
+const price = +((await this.productCardPrice.nth(indexOfProductCard).innerText())?.match(/\d*/)?.[0] || '');
+```
 ## Установка
 
 Для установки необходимо выполнить следующие шаги:
@@ -40,9 +55,6 @@ npx playwright test --project=webkit
 ```
 npx playwright test
 ```
-
-
-
 
 ## Просмотр Allure отчета
 
